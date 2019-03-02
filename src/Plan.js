@@ -39,12 +39,14 @@ class Plan extends Component {
 						for(var word = 3; word < words.length; word++){
 							prereqs.push(words[word]);
 						}
-						courses.push(new Course(words[0], words[1], words[2], prereqs));
-						Semester.courses.push(new Course(words[0], words[1], words[2], prereqs));
+						//courses.push(new Course(words[0], words[1], words[2], prereqs));
+						courses.push(<Course subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/>);
+						//Semester.courses.push(new Course(words[0], words[1], words[2], prereqs));
+						Semester.courses.push(<Course subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/>);
 						if(Semester.sub2num.get(words[0]) === undefined){
 							Semester.sub2num.set(words[0],  new Set([]))
 						}
-						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1], course: new Course(words[0], words[1], words[2], prereqs)})
+						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1], course:<Course subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/> })
 					}
 					Semester.courseSubjects = [];
 					for(var sub of Semester.sub2num){

@@ -3,6 +3,7 @@ import Select from 'react-select';
 
 const stylization = {
 	backgroundColor: "#FFFFFF",
+	width: "96%",
 }
 
 const twoSelect = {
@@ -36,7 +37,9 @@ class Semester extends Component {
 		console.log(newCourses);
 		console.log(selectedOption);
 		this.setState({ selectedCourseNumber: selectedOption,
-			courses: newCourses
+			courses: newCourses,
+			selectedSubject: {value: "", label: ""},
+			selectedCourseNumber: "",
 		});
 		console.log(`Course Number selected:`, selectedOption);
 
@@ -68,6 +71,7 @@ class Semester extends Component {
 				</div>
 				<table style={stylization}>
 					<tbody>
+						{this.state.courses}
 					</tbody>
 				</table>
 			</div>

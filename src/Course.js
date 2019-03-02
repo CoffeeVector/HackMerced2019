@@ -1,10 +1,18 @@
+import React, { Component } from 'react';
 
-class Course {
-	constructor(subject, number, units, prerequisites){
-		this.subject = subject;
-		this.number = number;
-		this.units = units;
-		this.prerequisites = prerequisites;
+const stylization = {
+	backgroundColor: "#FFFFFF",
+	width: "96%",
+}
+
+class Course extends Component {
+	constructor(props){
+		super(props)
+	}
+	render() {
+		return (
+			<tr><td>{this.props.subject} {this.props.number} units: {this.props.units}</td></tr>
+		);
 	}
 }
 
