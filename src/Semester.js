@@ -18,7 +18,8 @@ class Semester extends Component {
 		super(props);
 		this.state = {
 			selectedSubject: {value: "", label: ""},
-			selectedCourseNumber: ""
+			selectedCourseNumber: "",
+			courses: []
 		}
 	}
 
@@ -30,8 +31,15 @@ class Semester extends Component {
 	}
 
 	handleCourseNumberChange = (selectedOption) => {
-		this.setState({ selectedCourseNumber: selectedOption });
+		var newCourses = this.state.courses;
+		newCourses.push(selectedOption.course);
+		console.log(newCourses);
+		console.log(selectedOption);
+		this.setState({ selectedCourseNumber: selectedOption,
+			courses: newCourses
+		});
 		console.log(`Course Number selected:`, selectedOption);
+
 	}
 
 	render() {

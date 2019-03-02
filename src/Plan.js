@@ -44,7 +44,7 @@ class Plan extends Component {
 						if(Semester.sub2num.get(words[0]) === undefined){
 							Semester.sub2num.set(words[0],  new Set([]))
 						}
-						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1]})
+						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1], course: new Course(words[0], words[1], words[2], prereqs)})
 					}
 					Semester.courseSubjects = [];
 					for(var sub of Semester.sub2num){
