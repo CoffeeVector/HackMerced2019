@@ -21,7 +21,7 @@ class Plan extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", "testingcourselist.txt", false);
+		rawFile.open("GET", "courses.txt", false);
 		rawFile.onreadystatechange = function ()
 		{
 			if(rawFile.readyState === 4)
