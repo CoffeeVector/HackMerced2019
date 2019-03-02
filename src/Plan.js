@@ -8,18 +8,30 @@ class Plan extends Component {
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.state = {
-			semesters: []
+			semesters: [],
+			newSemseter: undefined
 		}
+	}
+
+	handleChange(event){
+		this.setState({
+			newSemester: event.target.value
+		});
 	}
 
 	handleSubmit(event){
 		event.preventDefault();
-		var newSemester = this.state.semesters;
-		newSemester.push(event.target.value);
+		var newSemesters = this.state.semesters;
+		if(!(this.state.newSemester === undefined)){
+			newSemesters.push(this.state.newSemester);
+		}
 		this.setState({
-			semesters: newSemester
+			semesters: newSemesters,
+			newSemester: undefined
 		});
+		console.log(newSemesters);
 	}
 
 	render() {
@@ -33,7 +45,7 @@ class Plan extends Component {
 						<form onSubmit={this.handleSubmit}>
 							<label>
 								Add Semester:
-								<input type="string"/>
+								<input onChange={this.handleChange}/>
 							</label><br/>
 						</form>
 					</div>
