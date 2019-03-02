@@ -19,14 +19,14 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: auto;
-	width: 100%
+	width: 100%;
+	min-height: 90vh;
 }
 
 .App-body div {
-	text-align: center;
+	text-align: left;
 	width: 100%;
 	white-space: nowrap;
-	overflow: hidden;
 }
 
 @font-face {
