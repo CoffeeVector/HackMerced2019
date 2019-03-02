@@ -20,6 +20,12 @@ class Plan extends Component {
 		this.setState({ startingYear: event.target.value });
 	}
 
+	handleChange(event){
+		this.setState({
+			newSemester: event.target.value
+		});
+	}
+
 	handleSubmit(event){
 		event.preventDefault();
 		console.log("startingYear: " + this.state.startingYear);
