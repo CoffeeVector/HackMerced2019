@@ -6,6 +6,20 @@ const stylization = {
 }
 
 class Semester extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedSubject: "",
+			selectedCourseNumber: "",
+		}
+	}
+
+
+	handleCourseSubjectChange = (selectedOption) => {
+		this.setState({ selectedSubject: selectedOption });
+		console.log(`Option selected:`, selectedOption);
+	}
+
 	render() {
 		return (
 			<div style={{width: "100%"}}>
@@ -14,9 +28,10 @@ class Semester extends Component {
 				</div>
 				<div>
 					<Select
-						value={"Hold up"}
-						onChange={this.handleChange}
-						options={[]}
+						name="Subject"
+						value={this.state.selectedSubject}
+						onChange={this.handleCourseSubjectChange}
+						options={Semester.courseSubjects}
 					/>
 				</div>
 				<table style={stylization}>
