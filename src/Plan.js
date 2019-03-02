@@ -5,10 +5,39 @@ const stylization = {
 	backgroundColor: "#C5EDEA"
 }
 class Plan extends Component {
+	constructor(props){
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {
+			semesters: []
+		}
+	}
+
+	handleSubmit(event){
+		event.preventDefault();
+		var newSemester = this.state.semesters;
+		newSemester.push(event.target.value);
+		this.setState({
+			semesters: newSemester
+		});
+	}
+
 	render() {
 		return (
 			<div style={stylization}>
-				Plan
+				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center"}}>
+					Plan
+				</div>
+				{(this.props.majorChosen === false) ? "":<div>
+					<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
+						<form onSubmit={this.handleSubmit}>
+							<label>
+								Add Semester:
+								<input type="string"/>
+							</label><br/>
+						</form>
+					</div>
+				</div>}
 			</div>
 		);
 		// PSEUDO: Once the major is selected, list semesters

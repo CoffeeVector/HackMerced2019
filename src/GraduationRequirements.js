@@ -107,7 +107,7 @@ class GraduationRequirements extends Component {
 						options={majors}
 					/>
 				</div>
-				{(this.state.major == null) ? "":
+				{(this.state.major === null) ? "":
 						<div>
 							{generalEducation}
 							{majorToRequirement[this.state.major.value]}
