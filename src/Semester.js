@@ -24,7 +24,8 @@ class Semester extends Component {
 
 
 	handleCourseSubjectChange = (selectedOption) => {
-		this.setState({ selectedSubject: selectedOption });
+		this.setState({ selectedSubject: selectedOption,
+			selectedCourseNumber: ""});
 		console.log(`Subject selected:`, selectedOption);
 	}
 
