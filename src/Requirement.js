@@ -7,10 +7,6 @@ const stylization = {
 
 
 class Requirements extends Component {
-	constructor(props){
-		super(props)
-	}
-
 	render() {
 		const rows = [];
 		for (var i = 0; i < this.props.courses.length; i++){
