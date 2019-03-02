@@ -1,5 +1,6 @@
 .App {
 	text-align: left;
+	font-family: 'Cairo', sans-serif;
 }
 
 .App-header {
@@ -26,4 +27,46 @@
 	width: 100%;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+@font-face {
+	font-family: 'Cairo';
+	font-style: normal;
+	src: url('/fonts/Cairo-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Cuprum';
+	font-style: normal;
+	src: url('/fonts/Cuprum-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Monserrat';
+	font-style: normal;
+	src: url('/fonts/Monserrat-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Nunito';
+	font-style: normal;
+	src: url('/fonts/Nunito-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	src: url('/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	font-style: normal;
+	src: url('/fonts/Quicksand-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Titillium Web';
+	font-style: normal;
+	src: url('/fonts/TitilliumWeb-Regular.ttf');
 }
