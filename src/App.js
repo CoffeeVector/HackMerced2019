@@ -8,6 +8,14 @@ class App extends Component {
 				<header className="App-header">
 					On my Way
 				</header>
+				<div className="App-body">
+					<div>
+						Left
+					</div>
+					<div>
+						Right
+					</div>
+				</div>
 			</div>
 		);
 	}

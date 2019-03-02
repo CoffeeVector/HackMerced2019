@@ -13,3 +13,18 @@
 	color: white;
 }
 
+.App-body {
+	margin: 0 0;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto;
+	width: 90%
+}
+
+.App-body div {
+	padding: 0.75em;
+	text-align: center;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
