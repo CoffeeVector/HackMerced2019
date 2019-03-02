@@ -8,18 +8,40 @@ class Plan extends Component {
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.state = {
-			semesters: []
+			semesters: [],
+			newSemester: "",
+			newSemesterError: false
 		}
+	}
+
+	handleChange(event){
+		this.setState({
+			newSemester: event.target.value
+		});
 	}
 
 	handleSubmit(event){
 		event.preventDefault();
-		var newSemester = this.state.semesters;
-		newSemester.push(event.target.value);
+		var newSemesters = this.state.semesters;
+		var error = false;
+		if(!(this.state.newSemester === "spring" || this.state.newSemester === "Spring"
+			|| this.state.newSemester === "fall" || this.state.newSemester === "Fall"
+			|| this.state.newSemester === "summer" || this.state.newSemester === "Summer"
+			|| this.state.newSemester === "winter" || this.state.newSemester === "Winter"
+		)){
+			error = true;
+		}
+		if(error === false){
+			newSemesters.push(this.state.newSemester.toLowerCase());
+		}
 		this.setState({
-			semesters: newSemester
+			semesters: newSemesters,
+			newSemester: "",
+			newSemesterError: error
 		});
+		console.log(newSemesters);
 	}
 
 	render() {
@@ -33,7 +55,7 @@ class Plan extends Component {
 						<form onSubmit={this.handleSubmit}>
 							<label>
 								Add Semester:
-								<input type="string"/>
+								<input value={this.state.newSemester}style={(this.state.newSemesterError === false) ? {}:{border: "1px solid red"}} onChange={this.handleChange}/>
 							</label><br/>
 						</form>
 					</div>
