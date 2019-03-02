@@ -6,11 +6,19 @@ const stylization = {
 	overflow: "visible"
 }
 
+const majors = [
+	{value: 'cse', label: 'Computer Science & Engineering'},
+	{value: 'me', label: 'Mechanical Engineering'},
+	{value: 'bio', label: 'Biology'},
+	{value: 'phys', label: 'Physics'},
+	{value: 'math', label: 'Applied Mathematics'}
+]
+
 class GraduationRequirements extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			sleectedOption: null
+			selectOption: null
 		}
 	}
 
@@ -20,13 +28,6 @@ class GraduationRequirements extends Component {
 	}
 
 	render() {
-		var majors = [
-			{value: 'cse', label: 'Computer Science & Engineering'},
-			{value: 'me', label: 'Mechanical Engineering'},
-			{value: 'bio', label: 'Biology'},
-			{value: 'phys', label: 'Physics'},
-			{value: 'math', label: 'Applied Mathematics'}
-		]
 		const { selectedOption } = this.state;
 		return (
 			<div style={stylization}>
@@ -36,7 +37,6 @@ class GraduationRequirements extends Component {
 					onChange={this.handleChange}
 					options={majors}
 				/>
-				Stuff
 			</div>
 		);
 	}
