@@ -31,12 +31,14 @@ class GraduationRequirements extends Component {
 	}
 
 	render() {
-		const selectedOption = this.state.selectedOption
+		const selectedMajor = this.state.major
 		return (
 			<div style={stylization}>
-				Graduation Requirements
+				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center"}}>
+					Graduation Requirements
+				</div>
 				<Select
-					value={selectedOption}
+					value={selectedMajor}
 					onChange={this.handleChange}
 					options={majors}
 				/>
