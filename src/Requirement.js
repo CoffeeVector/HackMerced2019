@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 const stylization = {
-	backgroundColor: "#C5C8C6",
+	backgroundColor: "#FFFFFF",
+	width: "100%"
 }
 
 
@@ -14,10 +15,10 @@ class Requirements extends Component {
 		const rows = [];
 		console.log(this.props.courses);
 		for (var i = 0; i < this.props.courses.length; i++){
-			rows.push(<tr key={i} >{this.props.courses[i][0]} {this.props.courses[i][1]}</tr>)
+			rows.push(<tr key={i}><td>{this.props.courses[i][0]} {this.props.courses[i][1]}</td></tr>)
 		}
 		return (
-			<div>
+			<div style={{borderStyle: "solid"}}>
 				<div style={{fontSize: "calc(3px + 2vmin)", textAlign: "left"}}>
 					{this.props.name}
 				</div>
