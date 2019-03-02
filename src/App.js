@@ -11,7 +11,7 @@ class App extends Component {
 					On my Way
 				</header>
 				<div className="App-body">
-					<GraduationRequirements/>
+					<GraduationRequirements majorSelected={() => console.log("MAJOR SELECTED!")}/>
 					<Plan/>
 				</div>
 			</div>

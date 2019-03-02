@@ -89,6 +89,9 @@ class GraduationRequirements extends Component {
 	handleChange = (selectedOption) => {
 		this.setState({ major: selectedOption });
 		console.log(`Option selected:`, selectedOption);
+		if(selectedOption != null){
+			this.props.majorSelected()
+		}
 	}
 
 	render() {
