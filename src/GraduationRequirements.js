@@ -7,6 +7,7 @@ class GraduationRequirements extends Component {
 	render() {
 		return (
 			<div style={stylization}>
+				Graduation Requirements
 			</div>
 		);
 	}

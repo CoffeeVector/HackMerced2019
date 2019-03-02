@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import GraduationRequirements from './GraduationRequirements.js'
+import Plan from './Plan.js'
 
 class App extends Component {
 	render() {
@@ -11,9 +12,7 @@ class App extends Component {
 				</header>
 				<div className="App-body">
 					<GraduationRequirements/>
-					<div>
-						Right
-					</div>
+					<Plan/>
 				</div>
 			</div>
 		);
