@@ -11,9 +11,11 @@ class Course extends Component {
 	}
 	render() {
 		return (
-			<tr><td>{this.props.subject} {this.props.number} units: {this.props.units}</td></tr>
+			<tr><td>
+					{this.props.subject} {this.props.number} Units: {this.props.units} {(this.props.prerequisites.length == 0) ? "":"Prerequisites: "} {this.props.prerequisites}
+				</td>
+			</tr>
 		);
 	}
 }
-
 export default Course;
