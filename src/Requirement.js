@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const stylization = {
 	backgroundColor: "#FFFFFF",
-	width: "100%"
+	width: "96%",
 }
 
 
@@ -18,8 +18,8 @@ class Requirements extends Component {
 			rows.push(<tr key={i}><td>{this.props.courses[i][0]} {this.props.courses[i][1]}</td></tr>)
 		}
 		return (
-			<div style={{borderStyle: "solid"}}>
-				<div style={{fontSize: "calc(3px + 2vmin)", textAlign: "left"}}>
+			<div style={{margin: "1vw"}}>
+				<div style={{fontSize: "calc(3px + 2vmin)", textAlign: "left", width: "96%"}}>
 					{this.props.name}
 				</div>
 				<table style={stylization}>

@@ -4,7 +4,6 @@ import Requirement from './Requirement.js'
 
 const stylization = {
 	backgroundColor: "#C5C8C6",
-	overflow: "visible"
 }
 const majors = [
 	{value: 'cse', label: 'Computer Science & Engineering'},
@@ -34,10 +33,10 @@ class GraduationRequirements extends Component {
 		const selectedMajor = this.state.major
 		const generalEducation = (
 			<div>
-				<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center"}}>
+				<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
 					General Education Requirements
 				</div>
-				<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left"}}>
+				<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
 					Lower Division General Education
 				</div>
 				<Requirement name="Spark Seminar" courses={[["SPARK", "001"]]}/>
@@ -50,11 +49,13 @@ class GraduationRequirements extends Component {
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center"}}>
 					Graduation Requirements
 				</div>
-				<Select
-					value={selectedMajor}
-					onChange={this.handleChange}
-					options={majors}
-				/>
+				<div style={{width: "96%", padding: "1vw" }}>
+					<Select
+						value={selectedMajor}
+						onChange={this.handleChange}
+						options={majors}
+					/>
+				</div>
 				{(this.state.major == null) ? "":
 						generalEducation
 				}
