@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ./GraduationRequirements.js
 
 const stylization = {
 	backgroundColor: "#C5EDEA"
