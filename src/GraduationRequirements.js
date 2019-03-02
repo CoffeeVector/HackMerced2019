@@ -31,12 +31,12 @@ class GraduationRequirements extends Component {
 	}
 
 	render() {
-		const selectedOption = this.state.selectedOption
+		const selectedMajor = this.state.major
 		return (
 			<div style={stylization}>
 				Graduation Requirements
 				<Select
-					value={selectedOption}
+					value={selectedMajor}
 					onChange={this.handleChange}
 					options={majors}
 				/>
