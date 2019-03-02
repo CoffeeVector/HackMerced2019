@@ -51,7 +51,7 @@ const majorToRequirement = {
 			Major Requirements
 		</div>
 		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
-			Required Major Preparation [32 Units]
+			Required Major Preparation [36 Units]
 		</div>
 		<Requirement name="Mathematics Requirement [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 		<Requirement name="Physics Requirement [8 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
@@ -92,7 +92,6 @@ class GraduationRequirements extends Component {
 	}
 
 	render() {
-		const selectedMajor = this.state.major
 		return (
 			<div style={stylization}>
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center"}}>
@@ -100,7 +99,7 @@ class GraduationRequirements extends Component {
 				</div>
 				<div style={{width: "96%", padding: "1vw" }}>
 					<Select
-						value={selectedMajor}
+						value={this.state.major}
 						onChange={this.handleChange}
 						options={majors}
 					/>

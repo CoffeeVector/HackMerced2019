@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ./GraduationRequirements.js
+import GraduationRequirment from "./GraduationRequirements.js"
 
 const stylization = {
 	backgroundColor: "#C5EDEA"
