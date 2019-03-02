@@ -32,7 +32,7 @@ class Plan extends Component {
 					var lines = allText.split("\n");
 					lines.pop();
 					Semester.courses = [];
-					Semester.courseSubjects = new Set([]);
+					Semester.sub2num = new Map([]);
 					for(var i = 0; i < lines.length; i++){
 						var words = lines[i].split(" ");
 						var prereqs = [];
@@ -41,15 +41,16 @@ class Plan extends Component {
 						}
 						courses.push(new Course(words[0], words[1], words[2], prereqs));
 						Semester.courses.push(new Course(words[0], words[1], words[2], prereqs));
-						Semester.courseSubjects.add(words[0]);
+						if(Semester.sub2num.get(words[0]) === undefined){
+							Semester.sub2num.set(words[0],  new Set([]))
+						}
+						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1]})
 					}
-					Semester.courseSubjectNames = Array.from(Semester.courseSubjects);
 					Semester.courseSubjects = [];
-					for(var j = 0; j < Semester.courseSubjectNames.length; j++){
-						Semester.courseSubjects.push({value: Semester.courseSubjectNames[j], label: Semester.courseSubjectNames[j]});
+					for(var sub of Semester.sub2num){
+						Semester.courseSubjects.push({value: sub[0], label: sub[0]});
 					}
-					console.log(Semester.courses);
-					console.log(Semester.courseSubjects);
+					Semester.sub2num.set("", new Set([]))
 				}
 			}
 		}
