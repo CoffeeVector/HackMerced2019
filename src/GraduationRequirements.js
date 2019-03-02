@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Select from 'react-styled-select';
+import Select from 'react-select';
 
 const stylization = {
 	backgroundColor: "#C5C8C6",
@@ -14,21 +14,24 @@ const majors = [
 	{value: 'math', label: 'Applied Mathematics'}
 ]
 
+const majorToRequirement = {
+}
+
 class GraduationRequirements extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			selectOption: null
+			major: null
 		}
 	}
 
 	handleChange = (selectedOption) => {
-		this.setState({ selectedOption });
+		this.setState({ major: selectedOption });
 		console.log(`Option selected:`, selectedOption);
 	}
 
 	render() {
-		const { selectedOption } = this.state;
+		const selectedOption = this.state.selectedOption
 		return (
 			<div style={stylization}>
 				Graduation Requirements
