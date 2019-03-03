@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/HackMerced2019/precache-manifest.f9d1b9ac41915fb9115d2093468a9b72.js"
+  "/HackMerced2019/precache-manifest.31f5d12e352e616d5e7484d26527fbe9.js"
 );
 
 workbox.clientsClaim();
