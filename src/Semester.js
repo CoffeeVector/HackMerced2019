@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import Course from './Course.js'
 
 const stylization = {
 	backgroundColor: "#FFFFFF",
@@ -25,6 +24,14 @@ class Semester extends Component {
 		}
 	}
 
+	getAllPrerequisites() {
+		var out = [];
+		for(var i = 0; i < this.state.courses.length; i++) {
+			out.push(this.state.courses[i].props.prerequisites);
+		}
+		return out;
+	}
+
 	handleCourseSubjectChange = (selectedOption) => {
 		this.setState({ selectedSubject: selectedOption,
 			selectedCourseNumber: ""});
@@ -39,8 +46,6 @@ class Semester extends Component {
 				const currentI = i;
 				newCourses[i] = React.cloneElement(selectedOption.course, {
 					onClose: () => {
-						console.log("currentI: ");
-						console.log(currentI);
 						var nc = this.state.courses;
 						nc[currentI] = null;
 						this.setState({courses: nc});
@@ -54,8 +59,6 @@ class Semester extends Component {
 			const currentI = newCourses.length;
 			newCourses.push(React.cloneElement(selectedOption.course, {
 				onClose: () => {
-					console.log("newCourses.length");
-					console.log(currentI);
 					var nc = this.state.courses;
 					nc[currentI] = null;
 					this.setState({courses: nc});
@@ -67,11 +70,11 @@ class Semester extends Component {
 			selectedSubject: {value: "", label: ""},
 			selectedCourseNumber: ""
 		});
-
+		this.props.prereqCallback(this.getAllPrerequisites());
+		this.props.courseCallback(newCourses);
 	}
 
 	render() {
-		console.log(this.state.courses);
 		return (
 			<div style={{width: "100%"}}>
 				<div style={{fontSize: "calc(3px + 2vmin)", textAlign: "left"}}>

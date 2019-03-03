@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import GraduationRequirement from "./GraduationRequirements.js"
 import Semester from "./Semester.js"
 import Course from "./Course.js"
 
 const stylization = {
-	backgroundColor: "#C5EDEA"
-}
+	backgroundColor: "#C5EDEA" }
 
 const seasons = ['Fall', 'Winter', 'Spring', 'Summer'];
 var courses = [];
-
 class Plan extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			startingYear: "",
-			semesters: []
+			semesters: [],
+			coursesInSemester: [],
+			prereqInSemester: []
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,11 +52,6 @@ class Plan extends Component {
 						Semester.courseSubjects.push({value: sub[0], label: sub[0]});
 					}
 					Semester.sub2num.set("", new Set([]))
-
-					// printing states of courses
-					for(var i = 0; i < Semester.courses.length; i++) {
-						console.log(Semester.courses[i]);
-					}
 				}
 			}
 		}
@@ -74,7 +68,21 @@ class Plan extends Component {
 		var newSemesters = [];
 		for(var i = 0; i < 4; i++){
 			for (var s = 0; s < seasons.length; s+=2){
-				newSemesters.push(<Semester key={key++} year={parseInt(this.state.startingYear) + i} season={seasons[s]}/>)
+				newSemesters.push(<Semester key={key++} year={parseInt(this.state.startingYear) + i} season={seasons[s]}
+					courseCallback={
+						(courses) => {
+							var newCoursesInSemester = this.state.coursesInSemester;
+							newCoursesInSemester[2*i + s/2] = courses;
+							this.setState({coursesInSemester: newCoursesInSemester});
+						}
+					}
+					prereqCallback={
+						(prereqs) => {
+							var newPrereqInSemester = this.state.prereqInSemester;
+							newPrereqInSemester[2*i + s/2] = prereqs;
+							this.setState({prereqInSemester: newPrereqInSemester});
+						}}
+					/>)
 			}
 		}
 		this.setState({semesters: newSemesters})
@@ -96,19 +104,6 @@ class Plan extends Component {
 				</div>
 			</div>
 		);
-		// PSEUDO: Once the major is selected, list semesters
-		// for fall and spring and let them input the classes that
-		// they have taken and plan to take.
-
-		// PSEUDO: While they're inputing their courses, we
-		// need to have a drop down menu of suggested classes
-		// that they could be typing. (If we got the time)
-
-		// PSEUDO: Hard part, take the courses that they've taken
-		// and the ones they plan to take and determine if these
-		// will fulfill their course requirements.
-
-
 	}
 }
 
