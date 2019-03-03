@@ -53,6 +53,11 @@ class Plan extends Component {
 						Semester.courseSubjects.push({value: sub[0], label: sub[0]});
 					}
 					Semester.sub2num.set("", new Set([]))
+
+					// printing states of courses
+					for(var i = 0; i < Semester.courses.length; i++) {
+						console.log(Semester.courses[i]);
+					}
 				}
 			}
 		}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import Course from './Course.js'
 
 const stylization = {
 	backgroundColor: "#FFFFFF",
-	width: "96%",
+	width: "100%",
 }
 
 const twoSelect = {
@@ -28,7 +29,6 @@ class Semester extends Component {
 	handleCourseSubjectChange = (selectedOption) => {
 		this.setState({ selectedSubject: selectedOption,
 			selectedCourseNumber: ""});
-		console.log(`Subject selected:`, selectedOption);
 	}
 
 	handleCourseNumberChange = (selectedOption) => {
@@ -36,10 +36,10 @@ class Semester extends Component {
 		newCourses.push(selectedOption.course);
 		console.log(newCourses);
 		console.log(selectedOption);
-		this.setState({ selectedCourseNumber: selectedOption,
+		this.setState({
 			courses: newCourses,
 			selectedSubject: {value: "", label: ""},
-			selectedCourseNumber: "",
+			selectedCourseNumber: ""
 		});
 		console.log(`Course Number selected:`, selectedOption);
 
@@ -69,11 +69,13 @@ class Semester extends Component {
 						/>
 					</div>
 				</div>
-				<table style={stylization}>
-					<tbody>
-						{this.state.courses}
-					</tbody>
-				</table>
+				<div>
+					<table style={stylization}>
+						<tbody>
+							{this.state.courses}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		);
 	}

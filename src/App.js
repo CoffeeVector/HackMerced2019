@@ -12,12 +12,12 @@ class App extends Component {
 					On my Way
 				</header>
 				<div className="App-body">
-					<GraduationRequirements majorSelected={() => {
-						console.log("MAJOR SELECTED!")
-						majorSelected = true}}/>
-					<Plan majorChosen={majorSelected}/>
-				</div>
-			</div>
+			<GraduationRequirements majorSelected={() => {
+				console.log("MAJOR SELECTED!")
+				majorSelected = true}}/>
+			<Plan majorChosen={majorSelected}/>
+		</div>
+	</div>
 		);
 	}
 }
