@@ -109,7 +109,7 @@ class PlanUI extends Component {
 		if(!(this.state.plan=== undefined)){
 			for(var sem = 0; sem < this.state.plan.semesters.length; sem++) {
 				if (sem === 0){
-					if(!(this.state.plan.semesters[sem].prereqs === undefined)) {
+					if(!(this.state.plan.semesters[sem].prereqs === undefined || this.state.plan.semesters[sem].prereqs === null)) {
 						for (var course = 0; course < this.state.plan.semesters[sem].prereqs.length; course++) {
 							if(!(this.state.plan.semesters[sem].prereqs[course].length === 0)){
 								this.state.plan.semesters[sem].courses[course].fulfilled = -1;
