@@ -5,7 +5,7 @@ class Plan {
 		this.semesters = []
 		var season = ['Fall', 'Spring']
 		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", "../../courses.txt", false);
+		rawFile.open("GET", "courses.txt", false);
 		rawFile.onreadystatechange = function ()
 		{
 			if(rawFile.readyState === 4)
