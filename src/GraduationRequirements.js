@@ -13,20 +13,6 @@ const majors = [
 	{value: 'math', label: 'Applied Mathematics'}
 ]
 
-const generalEducation = (
-	<div>
-		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
-			General Education Requirements
-		</div>
-		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
-			Lower Division General Education
-		</div>
-		<Requirement name="Spark Seminar" logic="all" courses={[["SPARK", "001"]]}/>
-		<Requirement name="Written Communication" logic="all" courses={[["WRI", "010"]]}/>
-		<Requirement name="Quantitative Reasoning" logic="any" courses={[["ECON", "010"], ["MATH", "011"], ["MATH", "021"], ["PHIL", "005"] , ["POLI", "010"], ["PSY", "010"], ["SOC", "010"]]}/>
-		<Requirement name="Language" logic="any" courses={[["BIOE", "021"], ["CHN", "002"], ["CSE", "021"], ["FRE", "002"], ["JPN", "002"], ["ME", "021"], ["SPAN", "002"]]}/>
-	</div>
-);
 
 const majorToRequirement = {
 	'cse': <div>
@@ -66,6 +52,12 @@ const majorToRequirement = {
 			Requirements for Biological Sciences Major
 		</div>
 		<Requirement name="Biological Sciences Requirement [14 units]" logic="all" courses={[["BIO", "001"], ["BIO", "001L"], ["BIO", "002"], ["BIO", "002L"], ["BIO", "110"]]}/>
+		<Requirement name="Chemistry Requirements [8 units]" logic="all" courses={[["CHEM", "002"], ["CHEM", "010"]]}/>
+		<Requirement name="Organic Chemistry Requirement [4 units]" logic="any" courses={[["CHEM", "008"], ["CHEM", "008H"]]}/>
+		<Requirement name="Mathematics Requirements [8 units]" logic="all" courses={[["MATH", "011"], ["MATH", "012"]]}/>
+		<Requirement name="Computer Science Requirement [4 units]" logic="all" courses={[["MATH", "015"]]}/>
+		<Requirement name="Probability and Statistics [3-4 units]" logic="any" courses={[["BIO", "018"], ["MATH", "032"], ["ENVE", "105"], ["PSY", "010"]]}/>
+		<Requirement name="Physics Requirements [8 units]" logic="all" courses={[["PHYS", "018"], ["PHYS", "019"]]}/>
 	</div>,
 	'phys':<div>
 		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
@@ -93,6 +85,21 @@ const majorToRequirement = {
 		<Requirement name="Physics Requirements [8 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
 	</div>
 }
+
+const generalEducation = ( 
+	<div> 
+		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}> 
+			General Education Requirements 
+		</div> 
+		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}> 
+			Lower Division General Education 
+		</div> 
+		<Requirement name="Spark Seminar" logic="all" courses={[["SPARK", "001"]]}/> 
+		<Requirement name="Written Communication" logic="all" courses={[["WRI", "010"]]}/> 
+		<Requirement name="Quantitative Reasoning" logic="any" courses={[["ECON", "010"], ["MATH", "011"], ["MATH", "021"], ["PHIL", "005"] , ["POLI", "010"], ["PSY", "010"], ["SOC", "010"]]}/> 
+		<Requirement name="Language" logic="any" courses={[["BIOE", "021"], ["CHN", "002"], ["CSE", "021"], ["FRE", "002"], ["JPN", "002"], ["ME", "021"], ["SPAN", "002"]]}/> 
+	</div> 
+);
 
 class GraduationRequirements extends Component {
 	constructor(props){
@@ -125,8 +132,8 @@ class GraduationRequirements extends Component {
 				</div>
 				{(this.state.major === null) ? "":
 						<div>
-							{generalEducation}
 							{majorToRequirement[this.state.major.value]}
+							{generalEducation}
 						</div>
 
 				}
