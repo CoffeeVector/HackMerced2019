@@ -7,17 +7,11 @@ const stylization = {
 	backgroundColor: "#C5EDEA"
 }
 
-const tableStyle = {
-	backgroundColor: "#FFFFFF",
-	width: "100%",
-}
-
 const seasons = ['Fall', 'Winter', 'Spring', 'Summer'];
 
 const twoSelect = {
 	margin: "0 0",
-	display: "grid",
-	gridTemplateColumns: "50% 50%",
+	display: "grid", gridTemplateColumns: "50% 50%",
 	gridTemplateRows: "auto",
 	width: "100%",
 }
@@ -29,14 +23,17 @@ const close = {
 
 const green = {
 	backgroundColor: "#00FF00",
+	width: "100%",
 }
 
 const red = {
 	backgroundColor: "#FF0000",
+	width: "100%",
 }
 
 const white = {
 	backgroundColor: "#FFFFFF",
+	width: "100%",
 }
 
 class PlanUI extends Component {
@@ -104,6 +101,14 @@ class PlanUI extends Component {
 		this.setState({plan: new Plan(this.state.startingYear)});
 	}
 
+	spacing = (preq) => {
+		var out = ""
+		for(var i = 0; i < preq.length; i+=2) {
+			out += preq[i] + preq[i + 1] + "  ";
+		}
+		return out;
+	}
+
 	render() {
 		if(!(this.state.plan=== undefined)){
 			for(var sem = 0; sem < this.state.plan.semesters.length; sem++) {
@@ -154,8 +159,8 @@ class PlanUI extends Component {
 						</div>
 						{semester.courses.map((course) =>
 							<div style={{marginTop: "1vh"}}>
-								<table style={tableStyle}><tbody>
-										<tr style={(course.fulfilled ==+ -1) ? {red}:{white}}><td style={(course.fulfilled === -1) ? {red}:{white}}>{course.subject} {course.number} {course.fulfilled}
+								<table style={(course.fulfilled === -1) ? red:white}><tbody>
+										<tr><td>{course.subject} {course.number} {(course.prereq.length === 0) ? "":"Prerequisites: "} {this.spacing(course.prereq)}
 												<button type="button" style={close} aria-label="Close" onClick={() => {
 													this.setState((state, props) => {
 														state.plan.semester[semester.index].courses[course.index] = null;
