@@ -20,22 +20,26 @@ const majorToRequirement = {
 			Major Requirements
 		</div>
 		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
+			Computer Science and Engineering Core [28 units]
+		</div>
+		<Requirement name="Lower Division Requirement [20 units]" logic="all" courses={[["CSE", "015"], ["CSE", "020"], ["CSE", "021"], ["CSE", "030"], ["CSE", "031"], ["ENGR", "065"]]}/>
+		<Requirement name="Upper Division Requirement [8 units]" logic="all" courses={[["CSE", "100"], ["CSE", "120"]]}/>
+		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
 			Required Major Preparation [32 Units]
 		</div>
 		<Requirement name="Mathematics Requirement [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 		<Requirement name="Physics Requirement [8 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
 		<Requirement name="Biological or Earth Systems Science Requirement [4 units]" logic="any" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
-		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
-			Computer Science and Engineering Core [28 units]
-		</div>
-		<Requirement name="Lower Division Requirement [20 units]" logic="all" courses={[["CSE", "015"], ["CSE", "020"], ["CSE", "021"], ["CSE", "030"], ["CSE", "031"], ["ENGR", "065"]]}/>
-		<Requirement name="Upper Division Requirement [8 units]" logic="all" courses={[["CSE", "100"], ["CSE", "120"]]}/>
 		<Requirement name="Technical Electives Requirement [30 units]" logic="30 units" courses={[["CSE", "1**"]]}/>
 	</div>,
 	'me': <div>
 		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
 			Major Requirements
 		</div>
+		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
+			Engineering Fundamentals Requirements [18 units]
+		</div>
+		<Requirement logic="all" courses={[["ENGR", "045"], ["ENGR", "057"], ["ENGR", "130"], ["ENGR", "151"], ["ENGR", "155"]]}/>
 		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
 			Required Major Preparation [36 Units]
 		</div>
@@ -78,10 +82,10 @@ const majorToRequirement = {
 		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "left", margin: "1vw"}}>
 			Requirements for Applied Mathematics
 		</div>
+		<Requirement name="Mathematics Requirements [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 		<Requirement name="Biological Sciences Requirement [4 units]" logic="any" courses={[["BIO", "001"], ["ESS", "001"], ["ESS", "005"]]}/>
 		<Requirement name="Computer Science Requirement [2-4 units]" logic="any" courses={[["CSE", "020"], ["ME", "021"]]}/>
 		<Requirement name="Chemistry Requirement [4 units]" logic="any" courses={[["CHEM", "002"], ["CHEM", "002H"]]}/>
-		<Requirement name="Mathematics Requirements [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 		<Requirement name="Physics Requirements [8 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
 	</div>
 }
