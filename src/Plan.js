@@ -7,6 +7,7 @@ const stylization = {
 
 const seasons = ['Fall', 'Winter', 'Spring', 'Summer'];
 var courses = [];
+var coursesRef = [];
 class Plan extends Component {
 	constructor(props){
 		super(props);
@@ -39,13 +40,14 @@ class Plan extends Component {
 							prereqs.push(words[word]);
 						}
 						//courses.push(new Course(words[0], words[1], words[2], prereqs));
-						courses.push(<Course subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/>);
+						coursesRef.push(React.createRef())
+						courses.push(<Course key={courses.length} ref={coursesRef[coursesRef.length -1]} subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/>);
 						//Semester.courses.push(new Course(words[0], words[1], words[2], prereqs));
-						Semester.courses.push(<Course subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/>);
+						Semester.courses.push(courses[courses.length - 1]);
 						if(Semester.sub2num.get(words[0]) === undefined){
 							Semester.sub2num.set(words[0],  new Set([]))
 						}
-						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1], course:<Course subject={words[0]} number={words[1]} units={words[2]} prerequisites={prereqs}/> })
+						Semester.sub2num.get(words[0]).add({value: words[1], label: words[1], course: courses[courses.length - 1]})
 					}
 					Semester.courseSubjects = [];
 					for(var sub of Semester.sub2num){
