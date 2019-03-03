@@ -70,17 +70,17 @@ class PlanUI extends Component {
 		for(var i = 0; i < newPlan.semesters[index].courses.length; i++){
 			//inserting into previously removed space
 			if (newPlan.semesters[index][i] === null) {
-				const currentI = i;
 				newPlan.semesters[index].courses[i] = selectedOption.value
 				newPlan.semesters[index].courses[i].index = i;
+				console.log(newPlan.semesters[index].courses[i].index );
 				inserted = true;
 				break;
 			}
 		}
 		if(inserted === false){
-			const currentI = newPlan.semesters[index].courses.length;
 			newPlan.semesters[index].courses.push(selectedOption.value);
 			newPlan.semesters[index].courses[newPlan.semesters[index].courses.length - 1].index = newPlan.semesters[index].courses.length - 1;
+			console.log(newPlan.semesters[index].courses[newPlan.semesters[index].courses.length - 1].index );
 		}
 		var newSelectedSubject = this.state.selectedSubject;
 		newSelectedSubject[index] = {value: "", label: ""}
@@ -158,21 +158,27 @@ class PlanUI extends Component {
 							</div>
 						</div>
 						{semester.courses.map((course) =>
-							<div style={{marginTop: "1vh"}}>
-								<table style={(course.fulfilled === -1) ? red:white}><tbody>
-										<tr><td>{course.subject} {course.number} {(course.prereq.length === 0) ? "":"Prerequisites: "} {this.spacing(course.prereq)}
-												<button type="button" style={close} aria-label="Close" onClick={() => {
-													this.setState((state, props) => {
-														state.plan.semester[semester.index].courses[course.index] = null;
-														return {plan: state.plan}
-													})
-												}}>
-												<span aria-hidden="true">×</span>
-											</button>
-									</td></tr>
-								</tbody>
-							</table>
-						</div>
+							{
+								if(!(course === null)){
+									return	<div style={{marginTop: "1vh"}}>
+										<table style={(course.fulfilled === -1) ? red:white}><tbody>
+												<tr><td>{course.subject} {course.number} {(course.prereq.length === 0) ? "":"Prerequisites: "} {this.spacing(course.prereq)}
+														<button type="button" style={close} aria-label="Close" onClick={() => {
+															this.setState((state, props) => {
+																state.plan.semesters[semester.index].courses[course.index] = null;
+																return {plan: state.plan}
+															})
+														}}>
+														<span aria-hidden="true">×</span>
+													</button>
+											</td></tr>
+										</tbody>
+									</table>
+								</div>
+								} else {
+									return null;
+								}
+							}
 						)}
 					</div>
 					)}

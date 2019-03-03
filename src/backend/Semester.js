@@ -43,7 +43,9 @@ class Semester {
 	get prereqs(){
 		var out = []
 		for (var i = 0; i < this._courses.length; i++) {
-			out.push(this._courses[i].prereq)
+			if(!(this._courses[i] === null)) {
+				out.push(this._courses[i].prereq)
+			}
 		}
 		return out;
 	}
