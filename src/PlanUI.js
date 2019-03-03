@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GraduationRequirement from "./GraduationRequirements.js"
 import Select from "react-select"
 import Plan from "./backend/Plan.js"
+import Course from "./backend/Course.js"
 const stylization = { backgroundColor: "#C5EDEA"
 }
 
@@ -45,16 +46,31 @@ class PlanUI extends Component {
 	}
 
 	handleCourseNumberChange = (index) => (selectedOption) => {
-		console.log("handleCourseNumberChange: " )
-		var newCourses = this.state.courses[index];
-		newCourses.push(selectedOption.course);
-		console.log(newCourses);
-		console.log(selectedOption);
+		var newPlan = this.state.plan;
+		var inserted = false;
+		for(var i = 0; i < newPlan.semesters[index].courses.length; i++){
+			//inserting into previously removed space
+			if (newPlan.semesters[index][i] === null) {
+				const currentI = i;
+				newPlan.semesters[index].courses[i] = selectedOption.value
+				inserted = true;
+				break;
+			}
+		}
+		if(inserted === false){
+			const currentI = newPlan.semesters[index].courses.length;
+			newPlan.semesters[index].courses.push(selectedOption.value);
+		}
+		var newSelectedSubject = this.state.selectedSubject;
+		newSelectedSubject[index] = {value: "", label: ""}
+
+		var newSelectedCourseNumber = this.state.selectedCourseNumber;
+		newSelectedCourseNumber[index] = ""
 		this.setState({
-			courses: newCourses,
-			selectedSubject: {value: "", label: ""},
-			selectedCourseNumber: ""
-		})
+			plan: newPlan,
+			selectedSubject: newSelectedSubject,
+			selectedCourseNumber: newSelectedCourseNumber
+		});
 		console.log(`Course Number selected:`, selectedOption);
 
 	}
@@ -65,10 +81,6 @@ class PlanUI extends Component {
 	}
 
 	render() {
-		if(!(Plan.sub2num === undefined)){
-			console.log(Plan.sub2num.get(this.state.selectedSubject[0].value))
-			console.log(Array.from(Plan.sub2num.get(this.state.selectedSubject[0].value)).map((course) => { return {value: course.number, label: course.number}}))
-		}
 		return (
 			<div style={stylization}>
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center", width: "96%"}}>
@@ -97,13 +109,13 @@ class PlanUI extends Component {
 									name="Course Number"
 									value={this.state.selectedCourseNumber[semester.index]}
 									onChange={this.handleCourseNumberChange(semester.index)}
-									options={Array.from(Plan.sub2num.get(this.state.selectedSubject[semester.index].value)).map((course) => { return {value: course.number, label: course.number}})}
+									options={Array.from(Plan.sub2num.get(this.state.selectedSubject[semester.index].value)).map((course) => { return {value: course, label: course.number}})}
 								/>
 							</div>
 						</div>
-						{semester.courses.map((course) => <div>
-							{course.name} {course.number}
-						</div>)}
+						{semester.courses.map((course) => <table style={stylization}><tbody>
+								<tr><td>{course.subject} {course.number}</td></tr>
+						</tbody></table>)}
 					</div>
 					)}
 				</div>
