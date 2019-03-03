@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "c61b80efc92e55ee1967",
-    "url": "/HackMerced2019/static/css/main.10e77b90.chunk.css"
+    "revision": "49ce400920eb3a3ccd05",
+    "url": "/HackMerced2019/static/css/main.bea365a7.chunk.css"
   },
   {
-    "revision": "c61b80efc92e55ee1967",
-    "url": "/HackMerced2019/static/js/main.c61b80ef.chunk.js"
+    "revision": "49ce400920eb3a3ccd05",
+    "url": "/HackMerced2019/static/js/main.49ce4009.chunk.js"
   },
   {
     "revision": "6c75ea543ec84c7ca707",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/HackMerced2019/static/js/2.c181d1ed.chunk.js"
   },
   {
-    "revision": "217a05a1e688b5b8be733def23eaad95",
+    "revision": "45878830e30b2a5eb200d553e5132998",
     "url": "/HackMerced2019/index.html"
   }
 ];
