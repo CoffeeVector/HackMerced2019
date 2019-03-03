@@ -62,6 +62,18 @@ class Plan extends Component {
 		this.setState({ startingYear: event.target.value });
 	}
 
+	courseCallback = (index) => (corses) => {
+		var newCoursesInSemester = this.state.coursesInSemester;
+		newCoursesInSemester[index] = courses;
+		this.setState({coursesInSemester: newCoursesInSemester});
+	}
+
+	prereqCallback = (index) => (prereqs) => {
+		var newPrereqInSemester = this.state.prereqInSemester;
+		newPrereqInSemester[index] = prereqs;
+		this.setState({prereqInSemester: newPrereqInSemester});
+	}
+
 	handleSubmit(event){
 		event.preventDefault();
 		var key = 0;
@@ -70,33 +82,30 @@ class Plan extends Component {
 			for (var s = 0; s < seasons.length; s+=2){
 				newSemesters.push(<Semester key={key++} year={parseInt(this.state.startingYear) + i} season={seasons[s]}
 					courseCallback={
-						(courses) => {
-							var newCoursesInSemester = this.state.coursesInSemester;
-							newCoursesInSemester[2*i + s/2] = courses;
-							this.setState({coursesInSemester: newCoursesInSemester});
-						}
+						this.courseCallback(2*i + s/2)
 					}
 					prereqCallback={
-						(prereqs) => {
-							var newPrereqInSemester = this.state.prereqInSemester;
-							newPrereqInSemester[2*i + s/2] = prereqs;
-							this.setState({prereqInSemester: newPrereqInSemester});
-						}}
-					/>)
+						this.prereqCallback(2*i + s/2)
+					}
+				/>)
 			}
 		}
 		this.setState({semesters: newSemesters})
 	}
 
 	render() {
-		//for(var sem = 0; sem < this.state.prereqInSemester.length; sem++) {
-		//if (sem == 0){
-		//for (var course = 0; course < this.state.prereqInSemester[sem]; course++) {
-		//console.log(this.state.prereqInSemester[sem][course])
-		//}
-		//} else {
-		//}
-		//}
+		for(var sem = 0; sem < this.state.prereqInSemester.length; sem++) {
+			if (sem === 0){
+				if(!(this.state.prereqInSemester[sem] === undefined)){
+					for (var course = 0; course < this.state.prereqInSemester[sem].length; course++) {
+						if(!(this.state.prereqInSemester[sem][course].length === 0)){
+							console.log(this.state.prereqInSemester[sem][course]);
+						}
+					}
+				}
+			} else {
+			}
+		}
 		return (
 			<div style={stylization}>
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center", width: "96%"}}>
