@@ -41,7 +41,7 @@ class Plan {
 		rawFile.send(null);
 		this.semesters = [];
 		for (var i = 0; i < 8; i++ ){
-			this.semesters.push(new Semester(parseInt(startYear) + Math.floor(i / 4), season[i%2]))
+			this.semesters.push(new Semester(parseInt(startYear) + Math.floor(i / 4), season[i%2], i))
 		}
 		console.log(this.semesters);
 	}

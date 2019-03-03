@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import GraduationRequirement from "./GraduationRequirements.js"
 import Select from "react-select"
 import Plan from "./backend/Plan.js"
-const stylization = {
-	backgroundColor: "#C5EDEA"
+const stylization = { backgroundColor: "#C5EDEA"
 }
 
 const seasons = ['Fall', 'Winter', 'Spring', 'Summer'];
@@ -20,14 +19,16 @@ class PlanUI extends Component {
 	constructor(props){
 		super(props);
 		var emptyList = []
+		var emptyList2 = []
 		for(var i = 0; i < 8; i++){
 			emptyList.push({value: "", label: ""});
+			emptyList2.push({value: "", label: ""});
 		}
 		this.state = {
 			startingYear: "",
 			semesters: [],
 			selectedSubject: emptyList,
-			selectedCourseNumber: emptyList,
+			selectedCourseNumber: emptyList2,
 			plan: undefined
 		}
 		this.handleChange = this.handleChange.bind(this);
@@ -40,11 +41,11 @@ class PlanUI extends Component {
 
 	handleCourseSubjectChange = (index) => (selectedOption) => {
 		console.log("selectedOption: " + selectedOption.value);
-		console.log(this.state.selectedSubject);
 		this.setState((state, props) => {state.selectedSubject[index] = selectedOption; return {selectedSubject: state.selectedSubject}})
 	}
 
 	handleCourseNumberChange = (index) => (selectedOption) => {
+		console.log("handleCourseNumberChange: " )
 		var newCourses = this.state.courses[index];
 		newCourses.push(selectedOption.course);
 		console.log(newCourses);
@@ -64,6 +65,10 @@ class PlanUI extends Component {
 	}
 
 	render() {
+		if(!(Plan.sub2num === undefined)){
+			console.log(Plan.sub2num.get(this.state.selectedSubject[0].value))
+			console.log(Array.from(Plan.sub2num.get(this.state.selectedSubject[0].value)).map((course) => { return {value: course.number, label: course.number}}))
+		}
 		return (
 			<div style={stylization}>
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center", width: "96%"}}>
@@ -75,23 +80,24 @@ class PlanUI extends Component {
 							<input type="number" placeholder={"Starting Year"} value={this.state.startingYear} onChange={this.handleChange} />
 						</label>
 					</form>
+
 					{(this.state.plan === undefined) ? "":this.state.plan.semesters.map((semester) =>  <div>
 						{semester.season} {semester.year}
 						<div style={twoSelect}>
 							<div style={{width: "95%", whitespace: "no-wrap"}}>
 								<Select
 									name="Subject"
-									value={this.state.selectedSubject}
-									onChange={this.handleCourseSubjectChange}
+									value={this.state.selectedSubject[semester.index]}
+									onChange={this.handleCourseSubjectChange(semester.index)}
 									options={Plan.courseSubjects}
 								/>
 							</div>
 							<div style={{width: "100%", whitespace: "no-wrap"}}>
 								<Select
 									name="Course Number"
-									value={this.state.selectedCourseNumber}
-									onChange={this.handleCourseNumberChange}
-									options={Array.from(Plan.sub2num.get(this.state.selectedSubject[0].value))}
+									value={this.state.selectedCourseNumber[semester.index]}
+									onChange={this.handleCourseNumberChange(semester.index)}
+									options={Array.from(Plan.sub2num.get(this.state.selectedSubject[semester.index].value)).map((course) => { return {value: course.number, label: course.number}})}
 								/>
 							</div>
 						</div>
