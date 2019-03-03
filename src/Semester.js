@@ -25,7 +25,6 @@ class Semester extends Component {
 		}
 	}
 
-
 	handleCourseSubjectChange = (selectedOption) => {
 		this.setState({ selectedSubject: selectedOption,
 			selectedCourseNumber: ""});
@@ -33,19 +32,46 @@ class Semester extends Component {
 
 	handleCourseNumberChange = (selectedOption) => {
 		var newCourses = this.state.courses;
-		newCourses.push(selectedOption.course);
-		console.log(newCourses);
-		console.log(selectedOption);
+		var inserted = false;
+		for(var i = 0; i < newCourses.length; i++){
+			//inserting into previously removed space
+			if (newCourses[i] === null) {
+				const currentI = i;
+				newCourses[i] = React.cloneElement(selectedOption.course, {
+					onClose: () => {
+						console.log("currentI: ");
+						console.log(currentI);
+						var nc = this.state.courses;
+						nc[currentI] = null;
+						this.setState({courses: nc});
+					}
+				});
+				inserted = true;
+				break;
+			}
+		}
+		if(inserted === false){
+			const currentI = newCourses.length;
+			newCourses.push(React.cloneElement(selectedOption.course, {
+				onClose: () => {
+					console.log("newCourses.length");
+					console.log(currentI);
+					var nc = this.state.courses;
+					nc[currentI] = null;
+					this.setState({courses: nc});
+				}
+			}));
+		}
 		this.setState({
 			courses: newCourses,
 			selectedSubject: {value: "", label: ""},
 			selectedCourseNumber: ""
 		});
-		console.log(`Course Number selected:`, selectedOption);
 
 	}
 
 	render() {
+		console.log(this.state.courses);
 		return (
 			<div style={{width: "100%"}}>
 				<div style={{fontSize: "calc(3px + 2vmin)", textAlign: "left"}}>

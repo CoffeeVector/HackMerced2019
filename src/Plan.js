@@ -7,7 +7,7 @@ const stylization = {
 	backgroundColor: "#C5EDEA"
 }
 
-const seasons = ['fall', 'winter', 'spring', 'summer'];
+const seasons = ['Fall', 'Winter', 'Spring', 'Summer'];
 var courses = [];
 
 class Plan extends Component {
