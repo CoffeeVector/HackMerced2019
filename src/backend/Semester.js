@@ -43,7 +43,7 @@ class Semester {
 	get prereqs(){
 		var out = []
 		for (var i = 0; i < this._courses.length; i++) {
-			if(!(this._courses[i] === null)) {
+			if(!(this._courses[i] === undefined || this._courses[i] === null)) {
 				out.push(this._courses[i].prereq)
 			}
 		}

@@ -14,7 +14,6 @@ const twoSelect = { margin: "0 0",
 	gridTemplateRows: "auto",
 	width: "100%",
 }
-
 const close = {
 	align: "right",
 	backgroundColor: "#FFFFFF",
@@ -60,7 +59,6 @@ class PlanUI extends Component {
 	}
 
 	handleCourseSubjectChange = (index) => (selectedOption) => {
-		console.log("selectedOption: " + selectedOption.value);
 		this.setState((state, props) => {state.selectedSubject[index] = selectedOption; return {selectedSubject: state.selectedSubject}})
 	}
 	handleCourseNumberChange = (index) => (selectedOption) => {
@@ -79,7 +77,6 @@ class PlanUI extends Component {
 		if(inserted === false){
 			newPlan.semesters[index].courses.push(selectedOption.value);
 			newPlan.semesters[index].courses[newPlan.semesters[index].courses.length - 1].index = newPlan.semesters[index].courses.length - 1;
-			console.log(newPlan.semesters[index].courses[newPlan.semesters[index].courses.length - 1].index );
 		}
 		var newSelectedSubject = this.state.selectedSubject;
 		newSelectedSubject[index] = {value: "", label: ""}
@@ -115,12 +112,38 @@ class PlanUI extends Component {
 					if(!(this.state.plan.semesters[sem].prereqs === undefined)) {
 						for (var course = 0; course < this.state.plan.semesters[sem].prereqs.length; course++) {
 							if(!(this.state.plan.semesters[sem].prereqs[course].length === 0)){
-								console.log(this.state.plan.semesters[sem].courses[course]);
 								this.state.plan.semesters[sem].courses[course].fulfilled = -1;
 							}
 						}
 					}
 				} else {
+					var c = [];
+					for (var s = 0; s < sem; s++) {
+						for (var c1 = 0; c1 < this.state.plan.semesters[s].courses.length; c1++){
+							if(!(this.state.plan.semesters[s].courses[c1] === undefined || this.state.plan.semesters[s].courses[c1] === null)){
+								c.push(this.state.plan.semesters[s].courses[c1].subject + this.state.plan.semesters[s].courses[c1].number)
+							}
+						}
+					}
+					console.log(c)
+
+					for (var c1 = 0; c1 < this.state.plan.semesters[sem].courses.length; c1++){
+						if(!(this.state.plan.semesters[sem].courses[c1] === undefined || this.state.plan.semesters[sem].courses[c1] === null)){
+							var ful = true;
+							for (var p = 0; p < this.state.plan.semesters[sem].courses[c1].prereq.length; p+=2 ){
+								console.log(this.state.plan.semesters[sem].courses[c1].prereq[p] + this.state.plan.semesters[sem].courses[c1].prereq[p + 1])
+								if(!(c.includes(this.state.plan.semesters[sem].courses[c1].prereq[p] + this.state.plan.semesters[sem].courses[c1].prereq[p + 1]))){
+									this.state.plan.semesters[sem].courses[c1].fulfilled = -1;
+									ful = false;
+									console.log("FAILED!")
+								}
+							}
+							if(ful == true) {
+								console.log("SUCESS!")
+								this.state.plan.semesters[sem].courses[c1].fulfilled = 1;
+							}
+						}
+					}
 				}
 			}
 		}
