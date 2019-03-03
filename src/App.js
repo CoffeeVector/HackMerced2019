@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import GraduationRequirements from './GraduationRequirements.js'
-import Plan from './Plan.js'
+import PlanUI from './PlanUI.js'
 
 class App extends Component {
 	render() {
@@ -12,12 +12,12 @@ class App extends Component {
 					On my Way
 				</header>
 				<div className="App-body">
-			<GraduationRequirements majorSelected={() => {
-				console.log("MAJOR SELECTED!")
-				majorSelected = true}}/>
-			<Plan majorChosen={majorSelected}/>
-		</div>
-	</div>
+					<GraduationRequirements majorSelected={() => {
+						console.log("MAJOR SELECTED!")
+						majorSelected = true}}/>
+					<PlanUI majorChosen={majorSelected}/>
+				</div>
+			</div>
 		);
 	}
 }
