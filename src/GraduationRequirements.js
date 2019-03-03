@@ -77,10 +77,10 @@ const majorToRequirement = {
 		<Requirement name="Physics Requirements [12 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"], ["PHYS", "010"]]}/>
 		<Requirement name="Chemistry Requirement [4 units]" logic="any" courses={[["CHEM", "002"], ["CHEM", "002H"]]}/>
 		<Requirement name="Computer Science Requirements [2 units]" logic="any" courses={[["CSE", "020"], ["MATH", "050"]]}/>
-		<Requirement name="Mathematics Requirements [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/> 
+		<Requirement name="Mathematics Requirements [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 	</div>,
 	'math':<div>
-		 <div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
+		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
 			Major Requirements
 		</div>
 		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "left", margin: "1vw"}}>
@@ -91,6 +91,7 @@ const majorToRequirement = {
 		<Requirement name="Chemistry Requirement [4 units]" logic="any" courses={[["CHEM", "002"], ["CHEM", "002H"]]}/>
 		<Requirement name="Mathematics Requirements [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 		<Requirement name="Physics Requirements [8 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
+	</div>
 }
 
 class GraduationRequirements extends Component {
