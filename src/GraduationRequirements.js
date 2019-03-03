@@ -90,19 +90,19 @@ const majorToRequirement = {
 	</div>
 }
 
-const generalEducation = ( 
-	<div> 
-		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}> 
-			General Education Requirements 
-		</div> 
-		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}> 
-			Lower Division General Education 
-		</div> 
-		<Requirement name="Spark Seminar" logic="all" courses={[["SPARK", "001"]]}/> 
-		<Requirement name="Written Communication" logic="all" courses={[["WRI", "010"]]}/> 
-		<Requirement name="Quantitative Reasoning" logic="any" courses={[["ECON", "010"], ["MATH", "011"], ["MATH", "021"], ["PHIL", "005"] , ["POLI", "010"], ["PSY", "010"], ["SOC", "010"]]}/> 
-		<Requirement name="Language" logic="any" courses={[["BIOE", "021"], ["CHN", "002"], ["CSE", "021"], ["FRE", "002"], ["JPN", "002"], ["ME", "021"], ["SPAN", "002"]]}/> 
-	</div> 
+const generalEducation = (
+	<div>
+		<div style={{fontSize: "calc(7px + 2vmin)", textAlign: "center", margin: "1vw"}}>
+			General Education Requirements
+		</div>
+		<div style={{fontSize: "calc(5px + 2vmin)", textAlign: "left", margin: "1vw"}}>
+			Lower Division General Education
+		</div>
+		<Requirement name="Spark Seminar" logic="all" courses={[["SPARK", "001"]]}/>
+		<Requirement name="Written Communication" logic="all" courses={[["WRI", "010"]]}/>
+		<Requirement name="Quantitative Reasoning" logic="any" courses={[["ECON", "010"], ["MATH", "011"], ["MATH", "021"], ["PHIL", "005"] , ["POLI", "010"], ["PSY", "010"], ["SOC", "010"]]}/>
+		<Requirement name="Language" logic="any" courses={[["BIOE", "021"], ["CHN", "002"], ["CSE", "021"], ["FRE", "002"], ["JPN", "002"], ["ME", "021"], ["SPAN", "002"]]}/>
+	</div>
 );
 
 class GraduationRequirements extends Component {
