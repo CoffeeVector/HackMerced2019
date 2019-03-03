@@ -7,13 +7,8 @@ const stylization = {
 
 
 class Requirements extends Component {
-	constructor(props){
-		super(props)
-	}
-
 	render() {
 		const rows = [];
-		console.log(this.props.courses);
 		for (var i = 0; i < this.props.courses.length; i++){
 			rows.push(<tr key={i}><td>{this.props.courses[i][0]} {this.props.courses[i][1]}</td></tr>)
 		}

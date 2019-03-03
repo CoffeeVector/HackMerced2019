@@ -70,3 +70,18 @@
 	font-style: normal;
 	src: url('/fonts/TitilliumWeb-Regular.ttf');
 }
+
+::-webkit-scrollbar {
+	width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #272822;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #F0C674;
+	border-radius: 3.5px;
+}
