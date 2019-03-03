@@ -184,7 +184,7 @@ class PlanUI extends Component {
 								if(!(course === null)){
 									return	<div style={{marginTop: "1vh"}}>
 										<table style={(course.fulfilled === -1) ? red:white}><tbody>
-												<tr><td>{course.subject} {course.number} {(course.prereq.length === 0) ? "":"Prerequisites: "} {this.spacing(course.prereq)}
+												<tr><td>{course.subject} {course.number} Units: {course.units} {(course.prereq.length === 0) ? "":"Prerequisites: "} {this.spacing(course.prereq)}
 														<button type="button" style={close} aria-label="Close" onClick={() => {
 															this.setState((state, props) => {
 																state.plan.semesters[semester.index].courses[course.index] = null;
