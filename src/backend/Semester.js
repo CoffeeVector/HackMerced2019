@@ -40,6 +40,14 @@ class Semester {
 		this._index = value;
 	}
 
+	get prereqs(){
+		var out = []
+		for (var i = 0; i < this._courses.length; i++) {
+			out.push(this._courses[i].prereq)
+		}
+		return out;
+	}
+
 }
 
 export default Semester;

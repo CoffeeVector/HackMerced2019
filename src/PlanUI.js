@@ -67,7 +67,6 @@ class PlanUI extends Component {
 		console.log("selectedOption: " + selectedOption.value);
 		this.setState((state, props) => {state.selectedSubject[index] = selectedOption; return {selectedSubject: state.selectedSubject}})
 	}
-
 	handleCourseNumberChange = (index) => (selectedOption) => {
 		var newPlan = this.state.plan;
 		var inserted = false;
@@ -76,6 +75,7 @@ class PlanUI extends Component {
 			if (newPlan.semesters[index][i] === null) {
 				const currentI = i;
 				newPlan.semesters[index].courses[i] = selectedOption.value
+				newPlan.semesters[index].courses[i].index = i;
 				inserted = true;
 				break;
 			}
@@ -83,6 +83,7 @@ class PlanUI extends Component {
 		if(inserted === false){
 			const currentI = newPlan.semesters[index].courses.length;
 			newPlan.semesters[index].courses.push(selectedOption.value);
+			newPlan.semesters[index].courses[newPlan.semesters[index].courses.length - 1].index = newPlan.semesters[index].courses.length - 1;
 		}
 		var newSelectedSubject = this.state.selectedSubject;
 		newSelectedSubject[index] = {value: "", label: ""}
@@ -104,6 +105,21 @@ class PlanUI extends Component {
 	}
 
 	render() {
+		if(!(this.state.plan=== undefined)){
+			for(var sem = 0; sem < this.state.plan.semesters.length; sem++) {
+				if (sem === 0){
+					if(!(this.state.plan.semesters[sem].prereqs === undefined)) {
+						for (var course = 0; course < this.state.plan.semesters[sem].prereqs.length; course++) {
+							if(!(this.state.plan.semesters[sem].prereqs[course].length === 0)){
+								console.log(this.state.plan.semesters[sem].courses[course]);
+								this.state.plan.semesters[sem].courses[course].fulfilled = -1;
+							}
+						}
+					}
+				} else {
+				}
+			}
+		}
 		return (
 			<div style={stylization}>
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center", width: "96%"}}>
@@ -139,10 +155,19 @@ class PlanUI extends Component {
 						{semester.courses.map((course) =>
 							<div style={{marginTop: "1vh"}}>
 								<table style={tableStyle}><tbody>
-										<tr style={{white}}><td style={{white}}>{course.subject} {course.number}</td></tr>
-									</tbody>
-								</table>
-							</div>
+										<tr style={(course.fulfilled ==+ -1) ? {red}:{white}}><td style={(course.fulfilled === -1) ? {red}:{white}}>{course.subject} {course.number} {course.fulfilled}
+												<button type="button" style={close} aria-label="Close" onClick={() => {
+													this.setState((state, props) => {
+														state.plan.semester[semester.index].courses[course.index] = null;
+														return {plan: state.plan}
+													})
+												}}>
+												<span aria-hidden="true">×</span>
+											</button>
+									</td></tr>
+								</tbody>
+							</table>
+						</div>
 						)}
 					</div>
 					)}

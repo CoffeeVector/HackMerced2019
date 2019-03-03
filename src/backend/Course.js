@@ -5,6 +5,8 @@ class Course {
 		this.number = number;
 		this.units = units;
 		this.prereq = prereq;
+		this.index = -1;
+		this.fulfilled = 0;
 	}
 
 	get subject(){
@@ -37,6 +39,22 @@ class Course {
 
 	set prereq(value){
 		this._prereq = value;
+	}
+
+	get index(){
+		return this._index;
+	}
+
+	set index(value) {
+		this._index = value;
+	}
+
+	get fulfilled() {
+		return this._fulfilled;
+	}
+
+	set fulfilled(value) {
+		this._fulfilled = value;
 	}
 }
 
