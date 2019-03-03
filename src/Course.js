@@ -18,11 +18,19 @@ class Course extends Component {
 		}
 	}
 
+
 	render() {
+		var spacing = (preq) => {
+			var out = ""
+			for(var i = 0; i < preq.length; i+=2) {
+				out += preq[i] + preq[i + 1] + "  ";
+			}
+			return out;
+		}
 		return (
 			<tr>
 				<td>
-					{this.props.subject} {this.props.number} Units: {this.props.units} {(this.props.prerequisites.length === 0) ? "":"Prerequisites: "} {this.props.prerequisites}
+					{this.props.subject} {this.props.number} Units: {this.props.units} {(this.props.prerequisites.length === 0) ? "":"Prerequisites: "} {spacing(this.props.prerequisites)}
 					{
 						(this.props.onClose === undefined) ? "":
 							<button type="button" style={close} aria-label="Close" onClick={this.props.onClose}>
