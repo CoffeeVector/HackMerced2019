@@ -89,6 +89,14 @@ class Plan extends Component {
 	}
 
 	render() {
+		//for(var sem = 0; sem < this.state.prereqInSemester.length; sem++) {
+		//if (sem == 0){
+		//for (var course = 0; course < this.state.prereqInSemester[sem]; course++) {
+		//console.log(this.state.prereqInSemester[sem][course])
+		//}
+		//} else {
+		//}
+		//}
 		return (
 			<div style={stylization}>
 				<div style={{fontSize: "calc(10px + 2vmin)", textAlign: "center", width: "96%"}}>

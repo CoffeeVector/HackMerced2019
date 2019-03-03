@@ -98,7 +98,7 @@ class Semester extends Component {
 						/>
 					</div>
 				</div>
-				<div>
+				<div style={{marginTop: "1vh"}}>
 					<table style={stylization}>
 						<tbody>
 							{this.state.courses}
