@@ -3,7 +3,13 @@ import GraduationRequirement from "./GraduationRequirements.js"
 import Select from "react-select"
 import Plan from "./backend/Plan.js"
 import Course from "./backend/Course.js"
-const stylization = { backgroundColor: "#C5EDEA"
+const stylization = {
+	backgroundColor: "#C5EDEA"
+}
+
+const tableStyle = {
+	backgroundColor: "#FFFFFF",
+	width: "100%",
 }
 
 const seasons = ['Fall', 'Winter', 'Spring', 'Summer'];
@@ -14,6 +20,23 @@ const twoSelect = {
 	gridTemplateColumns: "50% 50%",
 	gridTemplateRows: "auto",
 	width: "100%",
+}
+
+const close = {
+	align: "right",
+	backgroundColor: "#FFFFFF",
+}
+
+const green = {
+	backgroundColor: "#00FF00",
+}
+
+const red = {
+	backgroundColor: "#FF0000",
+}
+
+const white = {
+	backgroundColor: "#FFFFFF",
 }
 
 class PlanUI extends Component {
@@ -113,9 +136,14 @@ class PlanUI extends Component {
 								/>
 							</div>
 						</div>
-						{semester.courses.map((course) => <table style={stylization}><tbody>
-								<tr><td>{course.subject} {course.number}</td></tr>
-						</tbody></table>)}
+						{semester.courses.map((course) =>
+							<div style={{marginTop: "1vh"}}>
+								<table style={tableStyle}><tbody>
+										<tr style={{white}}><td style={{white}}>{course.subject} {course.number}</td></tr>
+									</tbody>
+								</table>
+							</div>
+						)}
 					</div>
 					)}
 				</div>
