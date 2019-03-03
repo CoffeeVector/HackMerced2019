@@ -29,7 +29,7 @@ const majorToRequirement = {
 		</div>
 		<Requirement name="Mathematics Requirement [20 units]" logic="all" courses={[["MATH", "021"], ["MATH", "022"], ["MATH", "023"], ["MATH", "024"], ["MATH", "032"]]}/>
 		<Requirement name="Physics Requirement [8 units]" logic="all" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
-		<Requirement name="Biological or Earth Systems Science Requirement [4 units]" logic="any" courses={[["PHYS", "008"], ["PHYS", "009"]]}/>
+		<Requirement name="Biological or Earth Systems Science Requirement [4 units]" logic="any" courses={[["BIO", "001"], ["BIO", "005"]]}/>
 		<Requirement name="Technical Electives Requirement [30 units]" logic="30 units" courses={[["CSE", "1**"]]}/>
 	</div>,
 	'me': <div>
